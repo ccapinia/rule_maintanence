@@ -22,7 +22,7 @@ const InputInterceptDataloadRuleID = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5">Intercept Dataload Rule ID List</h1>
+            <h1 className="text-center mt-5">Intercept Dataload Rule</h1>
             <form
                 className="d-flex mt-5"
                 onSubmit={onSubmitForm}>

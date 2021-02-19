@@ -1,4 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
+import EditInterceptDataloadDetailRow from "./EditInterceptDataloadDetailRow";
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
   const [InterceptDataloadDetails, setInterceptDataloadDetails] = useState([InterceptDataloadRule.intercept_dataload_rule_id]);
@@ -34,20 +38,20 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
   console.log(InterceptDataloadDetails);
   return (
     <Fragment>
-      <button
-        type="button"
-        className="btn btn-warning"
-        
+      <Button
         data-toggle="modal"
         data-target={`#id${InterceptDataloadRule.intercept_dataload_rule_id}`}
+        startIcon={<EditIcon />}
+        variant="contained"
+        color="primary"
       >
       Edit
-    </button>
+    </Button>
       <div className="modal" id={`id${InterceptDataloadRule.intercept_dataload_rule_id}`}>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">Edit Intercept Dataload Details</h4>
+            <h1 className="modal-title">Edit Intercept Dataload Details</h1>
               <button
                 type="button"
                 className="close"
@@ -55,8 +59,8 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
               >&times;
               </button>
             </div>
-            <div className="modal-body">
 
+            <div className="modal-body">
             <table className="table mt-5 text-center">
                 <thead>
                     <tr>
@@ -66,13 +70,12 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
                         <th>Operation</th>
                         <th>Value 1</th>
                         <th>Value 2</th>
-                        <th>Edit</th>
-                        <th>Delete</th> 
+                        <th>Functions</th> 
                     </tr>
                 </thead>
                 <tbody>
                     {/* 
-                        <EditInterceptDataloadDetails InterceptDataloadDetails={InterceptDataloadDetails}/>
+                      <button className="btn btn-danger" onClick={() => deleteInterceptDataloadDetails(InterceptDataloadDetails.intercept_dataload_detail_id)}>Delete</button>
                     */}
                     {InterceptDataloadDetails.map(InterceptDataloadDetails => (
                         <tr key={InterceptDataloadDetails.intercept_dataload_detail_id}>
@@ -83,10 +86,14 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
                             <td>{InterceptDataloadDetails.value}</td>
                             <td>{InterceptDataloadDetails.value2}</td>
                             <td>
-                                
-                            </td>
-                            <td>
-                                <button className="btn btn-danger" onClick={() => deleteInterceptDataloadDetails(InterceptDataloadDetails.intercept_dataload_detail_id)}>Delete</button>
+                            <EditInterceptDataloadDetailRow InterceptDataloadDetails={InterceptDataloadDetails}/>
+                            <Button
+                                onClick={() => deleteInterceptDataloadDetails(InterceptDataloadDetails.intercept_dataload_detail_id)}
+                                startIcon={<DeleteIcon />}
+                                variant="contained"
+                                color="secondary">
+                                Delete
+                              </Button>
                             </td>
                         </tr>
                     ))}
@@ -97,6 +104,13 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
             <div className="modal-footer">
               <button
                 type="button"
+                className="btn btn-warning"
+                data-dismiss="modal"
+              >
+                Save All
+              </button>
+              <button
+                type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
               >
@@ -105,7 +119,8 @@ const EditInterceptDataloadDetails = ({ InterceptDataloadRule }) => {
           </div>
         </div>
       </div>
-    </div></Fragment>);
+     </div>
+    </Fragment>);
 };
 
 export default EditInterceptDataloadDetails;

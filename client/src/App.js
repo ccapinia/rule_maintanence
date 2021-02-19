@@ -12,30 +12,33 @@ import InputRuleActions from './components/InputRuleActions';
 import ListRuleActions from './components/ListRuleActions';
 import ListInterceptDataloadDetails from './components/ListInterceptDataloadDetails';
 
+//editors
+import Continer from '@material-ui/core/Container';
+
 function App() {
   return (
-    <Fragment>
-      <div>
-        <h1 class="title">Rules Maintenance</h1>
-        <Tabs>
-          <div label="Intercept Dataload">
+    <Continer maxWidth="fixed" className="box">
+        <div>
+          <h1 class="title">Rules Maintenance</h1>
+          <Tabs>
+            <div label="Intercept Dataload">
               <InputInterceptDataloadRule />  
               <ListInterceptDataloadRule />
-          </div>
-          <div label="Alert">
+            </div>
+            <div label="Alert">
               <InputAlertGroupTeamUsers />
               <ListAlertGroupTeamUsers />
-          </div>
-          <div label="Rule Actions">
+            </div>
+            <div label="Rule Actions">
               <InputRuleActions />
               <ListRuleActions />
-          </div>
-          <div label="Test">
+            </div>
+            <div label="Test">
               <ListInterceptDataloadDetails />
-          </div>
-        </Tabs>    
-      </div>
-    </Fragment>
+            </div>
+          </Tabs>    
+        </div>  
+      </Continer>   
   );
 }
 

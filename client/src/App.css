@@ -1,18 +1,60 @@
-.tab-list {  border-bottom: 1px solid #ccc;
+.box {
+  padding: 60px 0;
+  background:linear-gradient(rgba(68, 53, 53, 0.5),transparent);
+  background-color:white;
+}
+
+h1 { 
+  font-family: 'Raleway',sans-serif; 
+  font-size: 62px; 
+  font-weight: 800; 
+  line-height: 72px; 
+  margin: 0 0 24px; 
+  text-align: center; 
+}
+
+.tab-list {  
+  border-bottom: 1px solid #ccc;
   padding-left: 0;
 }
 
 .tab-list-item {
+  border: solid #ccc;
+  border-width: 1px 1px 0 1px;
   display: inline-block;
+  font-family: 'Raleway',sans-serif; 
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
 }
 
 .tab-list-active {
-  background-color: white;
+  background-color: #696969;
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
+  color: white;
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background:linear-gradient(rgba(68, 53, 53, 0.5),transparent);
+  background-color:white;
+  width: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {

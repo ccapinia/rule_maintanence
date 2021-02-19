@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditInterceptDataloadRule from "./EditInterceptDataloadDetails";
-import EditInterceptDataloadDetails from "./EditInterceptDataloadDetails";
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const ListInterceptDataloadRule = () => {
 
@@ -60,13 +62,16 @@ const ListInterceptDataloadRule = () => {
                         <th>Last Edited</th>
                         <th>Hreadcount</th>
                         <th>Hreadcount Threshold</th>
-                        <th>Edit</th>
-                        <th>Delete</th> 
+                        <th>Functions</th> 
                     </tr>
                 </thead>
                 <tbody>
                     {/*
-                        
+                        <button
+                                    className="btn btn-danger"
+                                    onClick={() => deleteInterceptDataloadRule(InterceptDataloadRule.intercept_dataload_rule_id)}>
+                                    Delete
+                        </button>
                     */}
                     {InterceptDataloadRule.map(InterceptDataloadRule => (
                         <tr key={InterceptDataloadRule.intercept_dataload_rule_id}>
@@ -88,10 +93,17 @@ const ListInterceptDataloadRule = () => {
                             <td>{InterceptDataloadRule.heardcount}</td>
                             <td>{InterceptDataloadRule.heardcount_threshold}</td>
                             <td>
-                                <EditInterceptDataloadRule InterceptDataloadRule={InterceptDataloadRule}/>
-                            </td>
-                            <td>
-                                <button className="btn btn-danger" onClick={() => deleteInterceptDataloadRule(InterceptDataloadRule.intercept_dataload_rule_id)}>Delete</button>
+                                <ButtonGroup
+                                    orientation="vertical">
+                                    <EditInterceptDataloadRule InterceptDataloadRule={InterceptDataloadRule}/>
+                                    <Button
+                                        onClick={() => deleteInterceptDataloadRule(InterceptDataloadRule.intercept_dataload_rule_id)}
+                                        startIcon={<DeleteIcon />}
+                                        variant="contained"
+                                        color="secondary">
+                                        Delete
+                                    </Button>
+                                </ButtonGroup>                                
                             </td>
                         </tr>
                     ))}
